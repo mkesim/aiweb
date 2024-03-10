@@ -6,6 +6,8 @@ const chatContainer = document.querySelector(".chat-container");
 const themeButton = document.querySelector("#theme-btn");
 const deleteButton = document.querySelector("#delete-btn");
 const whisperButton = document.querySelector("#whisper-btn");
+const aboutButton = document.querySelector("#about-btn");
+const aboutInfo = document.querySelector("#about-info");
 
 let userText = null;
 const API_KEY = "sk-8d597984e45443f79e6d606636d55429"; // Replace with your DeepSeek API key
@@ -124,4 +126,8 @@ deleteButton.addEventListener("click", () => {
 
 whisperButton.addEventListener("click", () => {
     alert('Whisper will be available soon');
+});
+
+aboutButton.addEventListener("click", () => {
+    aboutInfo.style.display = aboutInfo.style.display === "none" ? "block" : "none";
 });

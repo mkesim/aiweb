@@ -4,8 +4,8 @@ const initialInputHeight = chatInput.style.height;
 const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const themeButton = document.querySelector("#theme-btn");
-const deleteButton = document.querySelector("#delete-btn"); //delete function not working:
-
+const deleteButton = document.querySelector("#delete-btn");
+const whisperButton = document.querySelector("#whisper-btn");
 
 let userText = null;
 const API_KEY = "sk-8d597984e45443f79e6d606636d55429"; // Replace with your DeepSeek API key
@@ -18,8 +18,9 @@ const loadDataFromLocalstorage = () => {
     themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
 
     const defaultText = `<div class="default-text">
-                            <h1>ChatGPT Clone</h1>
+                            <h1>Deep AI</h1>
                             <p>Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
+                            <p>Currently in Alpha Testing 🚀</p>
                         </div>`;
     chatContainer.innerHTML = localStorage.getItem("all-chats") || defaultText;
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
@@ -115,8 +116,12 @@ themeButton.addEventListener("click", () => {
 deleteButton.addEventListener("click", () => {
     localStorage.removeItem("all-chats");
     chatContainer.innerHTML = `<div class="default-text">
-                                <h1>ChatGPT Clone</h1>
+                                <h1>Deep AI</h1>
                                 <p>Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
+                                <p>Currently in Alpha Testing 🚀</p>
                             </div>`;    
-                                   
-});    
+});
+
+whisperButton.addEventListener("click", () => {
+    alert('Whisper will be available soon');
+});

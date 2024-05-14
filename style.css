@@ -1,7 +1,3 @@
-
-
-
-
 /* Import Google font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 * {
@@ -86,86 +82,21 @@ body {
   display: flex;
   max-width: 1200px;
   width: 100%;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: flex-end;
 }
-span.material-symbols-rounded {
-  -webkit-user-select: none;
-  user-select: none;
-  cursor: pointer;
+.chat .chat-content img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
 }
-.chat .chat-content span {
-  cursor: pointer;
-  font-size: 1.3rem;
-  color: var(--icon-color);
-  visibility: hidden;
+.chat .chat-content p {
+  padding: 0 30px;
+  text-align: justify;
 }
-.chat:hover .chat-content:not(:has(.typing-animation), :has(.error)) span {
-  visibility: visible;
-}
-.chat .chat-details {
-  display: flex;
-  align-items: center;
-}
-.chat .chat-details img {
-  width: 35px;
-  height: 35px;
-  align-self: flex-start;
-  object-fit: cover;
-  border-radius: 2px;
-}
-.chat .chat-details p {
-  white-space: pre-wrap;
-  font-size: 1.05rem;
-  padding: 0 50px 0 25px;
-  color: var(--text-color);
-  word-break: break-word;
-}
-.chat .chat-details p.error {
-  color: #e55865;
-}
-.chat .typing-animation {
-  padding-left: 25px;
-  display: inline-flex;
-}
-.typing-animation .typing-dot {
-  height: 7px;
-  width: 7px;
-  border-radius: 50%;
-  margin: 0 3px;
-  opacity: 0.7;
-  background: var(--text-color);
-  animation: animateDots 1.5s var(--delay) ease-in-out infinite;
-}
-.typing-animation .typing-dot:first-child {
-  margin-left: 0;
-}
-@keyframes animateDots {
-  0%,44% {
-    transform: translateY(0px);
-  }
-  28% {
-    opacity: 0.4;
-    transform: translateY(-6px);
-  }
-  44% {
-    opacity: 0.2;
-  }
-}
-
-/* Typing container styling */
 .typing-container {
   position: fixed;
   bottom: 0;
   width: 100%;
-  display: flex;
-  padding: 20px 10px;
-  justify-content: center;
-  background: var(--outgoing-chat-bg);
-  border-top: 1px solid var(--incoming-chat-border);
-}
-.typing-container .typing-content {
-  display: flex;
   max-width: 950px;
   width: 100%;
   align-items: flex-end;
@@ -224,7 +155,7 @@ span.material-symbols-rounded {
   background: var(--icon-hover-bg);
 }
 
-/* Reponsive Media Query */
+/* Responsive Media Query */
 @media screen and (max-width: 600px) {
   .default-text h1 {
     font-size: 2.3rem;
@@ -241,9 +172,6 @@ span.material-symbols-rounded {
   }
   .chat-container .chat p {
     padding: 0 20px;
-  }
-  .chat .chat-content:not(:has(.typing-animation), :has(.error)) span {
-    visibility: visible;
   }
   .typing-container {
     padding: 15px 10px;

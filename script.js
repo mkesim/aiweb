@@ -4,11 +4,10 @@ const initialInputHeight = chatInput.style.height;
 const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const themeButton = document.querySelector("#theme-btn");
-const deleteButton = document.querySelector("#delete-btn"); //delete function not working:
-
+const deleteButton = document.querySelector("#delete-btn");
 
 let userText = null;
-const API_KEY = "sk-8d597984e45443f79e6d606636d55429"; // Replace with your DeepSeek API key
+const API_KEY = "sk-8d597984e45443f79e6d606636d55429"; // Replace with your API key
 const API_URL = "https://api.deepseek.com/v1/chat/completions";
 
 // Load data from localStorage
@@ -52,10 +51,10 @@ const getChatResponse = async () => {
     try {
         const response = await fetch(API_URL, requestOptions);
         const data = await response.json();
-        return data.choices[0].message.content;
+        return data.choices[0].message.content.trim();
     } catch (error) {
         console.error("Error fetching chat response:", error);
-        return "Oops! Something went wrong while retrieving the response. Please try again.";
+        return "Sorry, something went wrong. Please try again.";
     }
 };
 
@@ -65,7 +64,7 @@ const handleOutgoingChat = async () => {
     if (!userText) return;
 
     chatInput.value = "";
-    chatInput.style.height = `${initialInputHeight}px`;
+    chatInput.style.height = initialInputHeight;
 
     const html = `<div class="chat-content">
                     <div class="chat-details">
@@ -96,7 +95,7 @@ const handleOutgoingChat = async () => {
 
 // Event listeners
 sendButton.addEventListener("click", handleOutgoingChat);
-//enter key to send message
+// Enter key to send message
 chatInput.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
         handleOutgoingChat();
@@ -105,18 +104,18 @@ chatInput.addEventListener("keyup", (event) => {
 // Load initial data
 loadDataFromLocalstorage(); 
 
-//fix theme button and delete button:
+// Theme button functionality
 themeButton.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
     themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
     localStorage.setItem("themeColor", document.body.classList.contains("light-mode") ? "light_mode" : "dark_mode");
 });
 
+// Delete button functionality
 deleteButton.addEventListener("click", () => {
     localStorage.removeItem("all-chats");
     chatContainer.innerHTML = `<div class="default-text">
                                 <h1>ChatGPT Clone</h1>
                                 <p>Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
-                            </div>`;    
-                                   
-});    
+                            </div>`;                                   
+});
